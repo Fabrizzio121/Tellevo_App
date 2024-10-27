@@ -13,16 +13,19 @@ export class ForgotPasswordPage {
   constructor(private router: Router) {}
 
   changePassword() {
-    const usuarioGuardado = JSON.parse(localStorage.getItem('usuario') || '{}');
-    
-    if (this.nombre === usuarioGuardado.nombre) {
+    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+
+    // Buscar el usuario por nombre
+    const usuario = usuarios.find((usuario: any) => usuario.nombre === this.nombre);
+
+    if (usuario) {
       // Cambiar la contraseña
-      usuarioGuardado.password = this.newPassword;
-      localStorage.setItem('usuario', JSON.stringify(usuarioGuardado));
-      alert('Contraseña cambiada con éxito');
-      this.router.navigate(['/login']);
+      usuario.password = this.newPassword;
+      localStorage.setItem('usuarios', JSON.stringify(usuarios)); // Guardar los cambios en localStorage
+      alert('Contraseña cambiada exitosamente');
+      this.router.navigate(['/login']); // Redirigir a la página de inicio de sesión
     } else {
-      alert('Nombre de usuario no encontrado');
+      alert('Usuario no encontrado');
     }
   }
 }

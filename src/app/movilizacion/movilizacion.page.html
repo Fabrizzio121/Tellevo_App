@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/opciones"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Movilización</ion-title>
+    <!-- Logo en la parte superior -->
+    <ion-buttons slot="end">
+      <ion-img src="assets/logotellevo.png" alt="Logo" style="height: 40px; width: auto;"></ion-img>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input [(ngModel)]="nombre" type="text"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label position="floating">Carrera</ion-label>
+    <ion-input [(ngModel)]="carrera" type="text"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label position="floating">Destino</ion-label>
+    <ion-input [(ngModel)]="destino" type="text"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label position="floating">Precio</ion-label>
+    <ion-input [(ngModel)]="precio" type="number"></ion-input>
+  </ion-item>
+  
+  
+  <ion-button expand="block" (click)="agregarViaje()" style="--background: #FFD700;">Crear Viaje</ion-button>
+
+  <ion-list>
+    <ion-item *ngFor="let viaje of viajes">
+      <ion-label>
+        <h2>{{ viaje.nombre }}</h2>
+        <p>Carrera: {{ viaje.carrera }}</p>
+        <p>Destino: {{ viaje.destino }}</p>
+        <p>Precio: ${{ viaje.precio }}</p> <!-- Mostrar el precio del viaje -->
+      </ion-label>
+      
+      <ion-button (click)="verPasajeros(viaje)" style="--background: #FFD700;">Ver Pasajeros</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

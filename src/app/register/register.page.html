@@ -5,6 +5,10 @@
       <ion-back-button defaultHref="/opciones"></ion-back-button> 
     </ion-buttons>
     <ion-title>Crear Cuenta</ion-title>
+    <!-- Logo en la parte superior -->
+    <ion-buttons slot="end">
+      <ion-img src="assets/logotellevo.png" alt="Logo" style="height: 40px; width: auto;"></ion-img>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -17,6 +21,7 @@
     <ion-label position="floating">Contraseña</ion-label>
     <ion-input [(ngModel)]="password" type="password"></ion-input>
   </ion-item>
-  <ion-button expand="block" (click)="crearCuenta()">Crear Cuenta</ion-button>
+  
+  
+  <ion-button expand="block" (click)="crearCuenta()" style="--background: #FFD700;">Crear Cuenta</ion-button>
 </ion-content>
-

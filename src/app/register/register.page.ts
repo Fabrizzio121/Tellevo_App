@@ -13,15 +13,21 @@ export class RegisterPage {
   constructor(private router: Router) {}
 
   crearCuenta() {
-    if (this.nombre && this.password) {
-      // Guardar los datos en localStorage
-      localStorage.setItem('usuario', JSON.stringify({ nombre: this.nombre, password: this.password }));
-      alert('Cuenta creada exitosamente');
-      // Redirigir al login
-      this.router.navigate(['/login']);
-    } else {
-      alert('Por favor, completa todos los campos');
+    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
+
+    // Verificar si el nombre ya está registrado
+    const usuarioExistente = usuarios.find((usuario: any) => usuario.nombre === this.nombre);
+
+    if (usuarioExistente) {
+      alert('El nombre de usuario ya existe. Intenta con otro.');
+      return;
     }
+
+    // Agregar el nuevo usuario al arreglo
+    usuarios.push({ nombre: this.nombre, password: this.password });
+    localStorage.setItem('usuarios', JSON.stringify(usuarios)); // Guardar en localStorage
+
+    alert('Cuenta creada exitosamente');
+    this.router.navigate(['/login']); // Redirigir a la página de inicio de sesión
   }
 }
-

@@ -19,12 +19,12 @@ export class OpcionesPage {
     this.nombreUsuario = usuarioLogueado.nombre || 'Usuario'; 
   }
 
-  goToScan() {
-    this.router.navigate(['/scan']);
+  goToMovilizacion() {
+    this.router.navigate(['/movilizacion']); // Navega a la página de movilización
   }
 
-  goToAsistencia() {
-    this.router.navigate(['/asistencia']);
+  goToVerViajes() {
+    this.router.navigate(['/ver-viajes']); // Navega a la página de ver viajes
   }
 
   logout() {

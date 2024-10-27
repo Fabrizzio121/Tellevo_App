@@ -13,10 +13,14 @@ export class LoginPage {
   constructor(private router: Router) {}
 
   login() {
-    const usuarioGuardado = JSON.parse(localStorage.getItem('usuario') || '{}');
-    
-    if (this.nombre === usuarioGuardado.nombre && this.password === usuarioGuardado.password) {
-      
+    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]'); // Obtener todos los usuarios
+
+    // Buscar el usuario que coincida con las credenciales
+    const usuarioEncontrado = usuarios.find((usuario: any) => 
+      usuario.nombre === this.nombre && usuario.password === this.password
+    );
+
+    if (usuarioEncontrado) {
       const usuarioLogueado = { nombre: this.nombre }; // Guarda el nombre del usuario logueado
       localStorage.setItem('usuarioLogueado', JSON.stringify(usuarioLogueado));
 

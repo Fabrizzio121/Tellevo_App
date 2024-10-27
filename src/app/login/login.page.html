@@ -5,6 +5,10 @@
       <ion-back-button defaultHref="/opciones"></ion-back-button> 
     </ion-buttons>
     <ion-title>Inicio de Sesión</ion-title>
+    <!-- Logo en la parte superior -->
+    <ion-buttons slot="end">
+      <ion-img src="assets/logotellevo.png" alt="Logo" style="height: 40px; width: auto;"></ion-img>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -18,11 +22,12 @@
     <ion-input [(ngModel)]="password" type="password"></ion-input>
   </ion-item>
   
-  <ion-button expand="block" (click)="login()">Iniciar Sesión</ion-button>
   
-  <!-- Enlace a la página de registro -->
-  <ion-button expand="block" fill="outline" (click)="goToRegister()">Crear Cuenta</ion-button>
+  <ion-button expand="block" (click)="login()" style="--background: #FFD700;">Iniciar Sesión</ion-button>
   
-  <!-- Enlace a la página de recuperación de contraseña -->
-  <ion-button expand="block" fill="outline" (click)="goToForgotPassword()">Olvidé mi Contraseña</ion-button>
+  
+  <ion-button expand="block" fill="outline" (click)="goToRegister()" style="--border-color: #FFD700; color: #FFD700;">Crear Cuenta</ion-button>
+  
+  
+  <ion-button expand="block" fill="outline" (click)="goToForgotPassword()" style="--border-color: #FFD700; color: #FFD700;">Olvidé mi Contraseña</ion-button>
 </ion-content>
